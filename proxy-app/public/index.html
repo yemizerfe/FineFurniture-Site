@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Proxy Server — forward any API request</title>
+    <meta
+      name="description"
+      content="Send a target URL, headers and body; the proxy performs the request and returns the upstream status, headers and body as JSON."
+    />
+    <style>
+      :root {
+        --bg: #06090c;
+        --panel: #0e1418;
+        --panel-2: #121a20;
+        --line: #1f2b33;
+        --text: #e6f1f5;
+        --muted: #8fa4ae;
+        --accent: #2dd4bf;
+        --accent-2: #38bdf8;
+        --amber: #fbbf24;
+        --red: #fb7185;
+        --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background:
+          radial-gradient(900px 500px at 8% -12%, rgba(45, 212, 191, 0.16), transparent 62%),
+          radial-gradient(760px 420px at 96% 0%, rgba(56, 189, 248, 0.13), transparent 58%),
+          var(--bg);
+        color: var(--text);
+        font: 16px/1.6 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent-2); }
+      code, pre { font-family: var(--mono); }
+      .wrap { max-width: 1000px; margin: 0 auto; padding: 54px 22px 90px; }
+      .eyebrow {
+        font: 600 12px/1 var(--mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent);
+      }
+      h1 { font-size: clamp(28px, 4.6vw, 42px); line-height: 1.14; letter-spacing: -0.02em; margin: 14px 0 12px; }
+      .lede { color: var(--muted); max-width: 64ch; margin: 0 0 20px; }
+      .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
+      .pill {
+        display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px;
+        border: 1px solid var(--line); border-radius: 999px; background: var(--panel);
+        font: 500 12.5px/1 var(--mono); color: var(--muted);
+      }
+      .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
+      .dot.ok { background: var(--accent); box-shadow: 0 0 10px rgba(45, 212, 191, 0.7); }
+      .dot.bad { background: var(--red); }
+      section { margin-top: 42px; }
+      h2 { font-size: 20px; margin: 0 0 6px; letter-spacing: -0.01em; }
+      .sub { color: var(--muted); margin: 0 0 16px; font-size: 14.5px; }
+      .card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+      table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+      th, td { text-align: left; padding: 11px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+      th { font: 600 11px/1.4 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); background: var(--panel-2); }
+      tr:last-child td { border-bottom: 0; }
+      td code { font-size: 13px; color: #cfeeea; white-space: nowrap; }
+      .m { display: inline-block; min-width: 56px; text-align: center; font: 700 10.5px/1 var(--mono); letter-spacing: 0.08em; padding: 5px 7px; border-radius: 6px; }
+      .m.get { color: var(--accent-2); background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.3); }
+      .m.post { color: var(--accent); background: rgba(45, 212, 191, 0.12); border: 1px solid rgba(45, 212, 191, 0.3); }
+      .grid { display: grid; gap: 14px; }
+      @media (min-width: 880px) { .grid.two { grid-template-columns: 1fr 1fr; } }
+      pre {
+        margin: 0; padding: 16px 18px; overflow-x: auto; background: #080d11; border: 1px solid var(--line);
+        border-radius: 12px; font-size: 13px; line-height: 1.65; color: #d3e7ec;
+      }
+      pre .c { color: #6a818c; }
+      pre .s { color: #9ff0dd; }
+      pre .k { color: #86c8f5; }
+      .field { display: grid; gap: 7px; padding: 14px 16px 0; }
+      .field label { font: 600 11.5px/1 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+      input, select, textarea {
+        width: 100%; padding: 10px 12px; border-radius: 9px; border: 1px solid var(--line);
+        background: #080d11; color: var(--text); font: 13.5px/1.5 var(--mono);
+      }
+      textarea { resize: vertical; min-height: 74px; }
+      input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.16); }
+      .row { display: grid; gap: 12px; grid-template-columns: 1fr; }
+      @media (min-width: 620px) { .row.two { grid-template-columns: 150px 1fr; } }
+      .actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding: 16px; }
+      button {
+        font: 600 14px/1 inherit; color: #03110f; cursor: pointer; border: 0; border-radius: 10px;
+        padding: 12px 20px; background: linear-gradient(150deg, #5eead4, #22c1ad);
+        box-shadow: 0 14px 28px -16px rgba(45, 212, 191, 0.9);
+      }
+      button:hover { filter: brightness(1.06); }
+      button.ghost {
+        background: transparent; color: var(--text); border: 1px solid var(--line); box-shadow: none; font-weight: 500;
+      }
+      .preset { font: 500 12px/1 var(--mono); color: var(--muted); background: transparent; border: 1px solid var(--line); border-radius: 999px; padding: 7px 11px; cursor: pointer; }
+      .preset:hover { color: var(--text); border-color: #2c4050; }
+      .log-head {
+        display: flex; justify-content: space-between; gap: 12px; align-items: center;
+        padding: 10px 16px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+        background: var(--panel-2); font: 500 12px/1 var(--mono); color: var(--muted);
+      }
+      .status-ok { color: var(--accent); }
+      .status-err { color: var(--red); }
+      #out { border: 0; border-radius: 0; max-height: 460px; overflow: auto; min-height: 150px; }
+      ul.rules { margin: 0; padding: 16px 16px 16px 34px; color: var(--muted); font-size: 14px; }
+      ul.rules li { margin-bottom: 7px; }
+      ul.rules b { color: var(--text); font-weight: 600; }
+      footer { margin-top: 48px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="eyebrow">Proxy Server · v1.0.0</div>
+      <h1>Forward any API request.</h1>
+      <p class="lede">
+        Send a target <code>url</code>, a <code>method</code>, the <code>headers</code> and a
+        <code>body</code>. The proxy performs the request from the edge and hands back the upstream
+        status, headers and body as JSON — or streams it verbatim.
+      </p>
+      <div class="pills">
+        <span class="pill"><span id="health-dot" class="dot"></span><span id="health-text">checking…</span></span>
+        <span class="pill">CORS enabled</span>
+        <span class="pill">2 MB / 25 s limits</span>
+      </div>
+
+      <section>
+        <h2>Try it</h2>
+        <p class="sub">Runs against this deployment, through <code>POST /api/proxy</code>.</p>
+        <div class="card">
+          <div class="row two">
+            <div class="field">
+              <label for="method">Method</label>
+              <select id="method">
+                <option>GET</option>
+                <option>POST</option>
+                <option>PUT</option>
+                <option>PATCH</option>
+                <option>DELETE</option>
+                <option>HEAD</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="url">Target URL</label>
+              <input id="url" value="https://api.github.com/repos/cloudflare/workers-sdk" spellcheck="false" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="headers">Headers (JSON)</label>
+            <textarea id="headers" spellcheck="false">{ "accept": "application/vnd.github+json" }</textarea>
+          </div>
+          <div class="field">
+            <label for="body">Body (JSON or raw text)</label>
+            <textarea id="body" spellcheck="false" placeholder='{"hello": "world"}'></textarea>
+          </div>
+          <div class="actions">
+            <button id="send">Send request</button>
+            <button class="ghost" id="passthrough">Send as passthrough</button>
+            <button class="preset" data-preset="github">GitHub API</button>
+            <button class="preset" data-preset="post">POST a body</button>
+            <button class="preset" data-preset="json">JSON API</button>
+          </div>
+          <div class="log-head">
+            <span id="req-label">no request sent yet</span>
+            <span id="req-status"></span>
+          </div>
+          <pre id="out">Pick "Send request" — the proxy envelope appears here.</pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Endpoint</h2>
+        <p class="sub">One POST does everything. A GET variant exists for quick reads.</p>
+        <div class="card">
+          <table>
+            <thead>
+              <tr><th>Method</th><th>Route</th><th>Purpose</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><span class="m post">POST</span></td><td><code>/api/proxy</code></td><td class="sub" style="margin:0">Forward a request described by a JSON payload</td></tr>
+              <tr><td><span class="m get">GET</span></td><td><code>/api/proxy?url=…</code></td><td class="sub" style="margin:0">Forward a GET; <code>header.X-Name=value</code> becomes a header</td></tr>
+              <tr><td><span class="m get">GET</span></td><td><code>/api/health</code></td><td class="sub" style="margin:0">Service status and limits</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>Request payload</h2>
+        <div class="grid two">
+          <pre>{
+  <span class="k">"url"</span>: <span class="s">"https://api.example.com/v1/items"</span>,
+  <span class="k">"method"</span>: <span class="s">"POST"</span>,
+  <span class="k">"headers"</span>: {
+    <span class="k">"authorization"</span>: <span class="s">"Bearer TOKEN"</span>,
+    <span class="k">"content-type"</span>: <span class="s">"application/json"</span>
+  },
+  <span class="k">"body"</span>: { <span class="k">"name"</span>: <span class="s">"widget"</span> },
+  <span class="k">"timeout_ms"</span>: 10000,
+  <span class="k">"follow_redirects"</span>: true,
+  <span class="k">"passthrough"</span>: false
+}</pre>
+          <pre><span class="c">// response</span>
+{
+  <span class="k">"data"</span>: {
+    <span class="k">"request"</span>: { <span class="k">"url"</span>: <span class="s">"…"</span>, <span class="k">"method"</span>: <span class="s">"POST"</span>, <span class="k">"headers"</span>: {}, <span class="k">"body_bytes"</span>: 21 },
+    <span class="k">"response"</span>: {
+      <span class="k">"status"</span>: 201,
+      <span class="k">"ok"</span>: true,
+      <span class="k">"headers"</span>: { <span class="k">"content-type"</span>: <span class="s">"application/json"</span> },
+      <span class="k">"body_encoding"</span>: <span class="s">"json"</span>,
+      <span class="k">"body"</span>: { <span class="k">"id"</span>: 42 },
+      <span class="k">"bytes"</span>: 15,
+      <span class="k">"truncated"</span>: false,
+      <span class="k">"duration_ms"</span>: 84
+    }
+  }
+}</pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>curl</h2>
+        <pre>curl -X POST <span class="s">"<span class="base"></span>/api/proxy"</span> \
+  -H <span class="s">"content-type: application/json"</span> \
+  -d <span class="s">'{
+    "url": "https://api.github.com/repos/cloudflare/workers-sdk",
+    "method": "GET",
+    "headers": { "accept": "application/vnd.github+json" }
+  }'</span>
+
+<span class="c"># GET shorthand, with a custom header</span>
+curl <span class="s">"<span class="base"></span>/api/proxy?url=https%3A%2F%2Fexample.com&amp;header.x-test=1"</span>
+
+<span class="c"># stream the upstream response instead of wrapping it</span>
+curl -X POST <span class="s">"<span class="base"></span>/api/proxy"</span> \
+  -H <span class="s">"content-type: application/json"</span> \
+  -d <span class="s">'{"url": "https://httpbin.org/json", "passthrough": true}'</span></pre>
+      </section>
+
+      <section>
+        <h2>Limits and guardrails</h2>
+        <div class="card">
+          <ul class="rules">
+            <li><b>Methods</b>: GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS. GET/HEAD cannot carry a body.</li>
+            <li><b>Size</b>: request bodies up to 512 KB, upstream responses capped at 2 MB (marked <code>truncated</code>).</li>
+            <li><b>Time</b>: <code>timeout_ms</code> between 1 000 and 25 000 ms; a slow upstream returns <code>504 upstream_timeout</code>.</li>
+            <li><b>SSRF</b>: private, loopback, link-local and metadata addresses (<code>127.0.0.1</code>, <code>10/8</code>, <code>169.254.169.254</code>, <code>*.internal</code>, <code>::1</code>) are refused with <code>403 blocked_target</code>.</li>
+            <li><b>Headers</b>: only what you send is forwarded. Hop-by-hop headers and <code>host</code> are recomputed; credentials in the URL are rejected.</li>
+            <li><b>Encoding</b>: JSON and text come back decoded (<code>body_encoding: "json"</code> or <code>"utf8"</code>); binary comes back as base64.</li>
+          </ul>
+        </div>
+      </section>
+
+      <footer>
+        Note: this endpoint is open, so anyone with the link can proxy through it. Keep the response
+        limits in place, or put an access token in front of it before using it for private APIs.
+      </footer>
+    </div>
+
+    <script>
+      const base = location.origin;
+      for (const el of document.querySelectorAll('.base')) el.textContent = base;
+
+      const dot = document.getElementById('health-dot');
+      const healthText = document.getElementById('health-text');
+      fetch('/api/health')
+        .then((r) => r.json())
+        .then((body) => {
+          const ok = body?.data?.status === 'ok';
+          dot.classList.add(ok ? 'ok' : 'bad');
+          healthText.textContent = ok ? 'online' : 'degraded';
+        })
+        .catch(() => {
+          dot.classList.add('bad');
+          healthText.textContent = 'unreachable';
+        });
+
+      const out = document.getElementById('out');
+      const label = document.getElementById('req-label');
+      const statusEl = document.getElementById('req-status');
+      const fields = {
+        method: document.getElementById('method'),
+        url: document.getElementById('url'),
+        headers: document.getElementById('headers'),
+        body: document.getElementById('body'),
+      };
+
+      const presets = {
+        github: () => {
+          fields.method.value = 'GET';
+          fields.url.value = 'https://api.github.com/repos/cloudflare/workers-sdk';
+          fields.headers.value = '{ "accept": "application/vnd.github+json" }';
+          fields.body.value = '';
+        },
+        post: () => {
+          fields.method.value = 'POST';
+          fields.url.value = 'https://postman-echo.com/post';
+          fields.headers.value = '{ "content-type": "application/json", "x-demo": "proxy" }';
+          fields.body.value = '{ "hello": "world", "from": "proxy playground" }';
+        },
+        json: () => {
+          fields.method.value = 'GET';
+          fields.url.value = 'https://jsonplaceholder.typicode.com/posts?_limit=3';
+          fields.headers.value = '{ "accept": "application/json" }';
+          fields.body.value = '';
+        },
+      };
+
+      for (const btn of document.querySelectorAll('[data-preset]')) {
+        btn.addEventListener('click', () => presets[btn.dataset.preset]?.());
+      }
+
+      function parseHeaders(raw) {
+        if (!raw.trim()) return {};
+        const parsed = JSON.parse(raw);
+        if (parsed === null || typeof parsed !== 'object' || Array.isArray(parsed)) {
+          throw new Error('Headers must be a JSON object');
+        }
+        return parsed;
+      }
+
+      function parseBody(raw) {
+        if (!raw.trim()) return undefined;
+        try {
+          return JSON.parse(raw);
+        } catch {
+          return raw;
+        }
+      }
+
+      async function send(passthrough) {
+        let payload;
+        try {
+          payload = {
+            url: fields.url.value.trim(),
+            method: fields.method.value,
+            headers: parseHeaders(fields.headers.value),
+          };
+          const body = parseBody(fields.body.value);
+          if (body !== undefined) payload.body = body;
+          if (passthrough) payload.passthrough = true;
+        } catch (err) {
+          statusEl.textContent = 'invalid input';
+          statusEl.className = 'status-err';
+          out.textContent = String(err.message || err);
+          return;
+        }
+
+        label.textContent = `${payload.method} ${payload.url}${passthrough ? ' (passthrough)' : ''}`;
+        statusEl.textContent = '…';
+        statusEl.className = '';
+        out.textContent = 'sending…';
+
+        try {
+          const res = await fetch('/api/proxy', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+          const text = await res.text();
+          let pretty = text;
+          try {
+            pretty = JSON.stringify(JSON.parse(text), null, 2);
+          } catch {}
+          statusEl.textContent = `${res.status} ${res.statusText}`;
+          statusEl.className = res.ok ? 'status-ok' : 'status-err';
+          out.textContent = pretty || '(empty body)';
+        } catch (err) {
+          statusEl.textContent = 'network error';
+          statusEl.className = 'status-err';
+          out.textContent = String(err);
+        }
+      }
+
+      document.getElementById('send').addEventListener('click', () => send(false));
+      document.getElementById('passthrough').addEventListener('click', () => send(true));
+    </script>
+  </body>
+</html>

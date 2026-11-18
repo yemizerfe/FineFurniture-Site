@@ -1,0 +1,858 @@
+[
+  {
+    "slug": "grey-tufted-office-chair",
+    "sku": "FF-201",
+    "name": "Grey Tufted Office Chair",
+    "category": "office",
+    "room": "office",
+    "image": "public/assets/img/gallery/grey-tufted-office-chair-lux4-960.webp"
+  },
+  {
+    "slug": "light-blue-accent-armchair",
+    "sku": "FF-202",
+    "name": "Light Blue Accent Armchair",
+    "category": "chairs",
+    "room": "living",
+    "image": "public/assets/img/gallery/light-blue-accent-armchair-lux4-960.webp"
+  },
+  {
+    "slug": "white-oval-dining-set",
+    "sku": "FF-203",
+    "name": "White Oval Dining Set",
+    "category": "dining",
+    "room": "dining",
+    "image": "public/assets/img/gallery/white-oval-dining-set-lux4-960.webp"
+  },
+  {
+    "slug": "blue-upholstered-bed",
+    "sku": "FF-204",
+    "name": "Blue Upholstered Bed",
+    "category": "bedroom",
+    "room": "bedroom",
+    "image": "public/assets/img/gallery/blue-upholstered-bed-lux4-960.webp"
+  },
+  {
+    "slug": "white-media-wall-unit",
+    "sku": "FF-205",
+    "name": "White Media Wall Unit",
+    "category": "tables",
+    "room": "living",
+    "image": "public/assets/img/gallery/white-media-wall-unit-lux4-960.webp"
+  },
+  {
+    "slug": "carved-wood-bed",
+    "sku": "FF-206",
+    "name": "Carved Wood Bed",
+    "category": "bedroom",
+    "room": "bedroom",
+    "image": "public/assets/img/gallery/carved-wood-bed-lux4-960.webp"
+  },
+  {
+    "slug": "grey-modular-sofa",
+    "sku": "FF-207",
+    "name": "Grey Modular Sofa",
+    "category": "sofas",
+    "room": "living",
+    "image": "public/assets/img/gallery/grey-modular-sofa-lux4-960.webp"
+  },
+  {
+    "slug": "shoe-storage-cabinet",
+    "sku": "FF-208",
+    "name": "Shoe Storage Cabinet",
+    "category": "storage",
+    "room": "bedroom",
+    "image": "public/assets/img/gallery/shoe-storage-cabinet-lux4-960.webp"
+  },
+  {
+    "slug": "beige-dining-chair",
+    "sku": "FF-209",
+    "name": "Beige Dining Chair",
+    "category": "chairs",
+    "room": "dining",
+    "image": "public/assets/img/gallery/beige-dining-chair-lux4-960.webp"
+  },
+  {
+    "slug": "glass-display-cabinet",
+    "sku": "FF-210",
+    "name": "Glass Display Cabinet",
+    "category": "storage",
+    "room": "dining",
+    "image": "public/assets/img/gallery/glass-display-cabinet-lux4-960.webp"
+  },
+  {
+    "slug": "grey-corner-sofa",
+    "sku": "FF-211",
+    "name": "Grey Corner Sofa",
+    "category": "sofas",
+    "room": "living",
+    "image": "public/assets/img/gallery/grey-corner-sofa-lux4-960.webp"
+  },
+  {
+    "slug": "round-wood-dining-set",
+    "sku": "FF-212",
+    "name": "Round Wood Dining Set",
+    "category": "dining",
+    "room": "dining",
+    "image": "public/assets/img/gallery/round-wood-dining-set-lux4-960.webp"
+  },
+  {
+    "slug": "walnut-writing-desk",
+    "sku": "FF-213",
+    "name": "Walnut Writing Desk",
+    "category": "office",
+    "room": "office",
+    "image": "public/assets/img/gallery/walnut-writing-desk-lux4-960.webp"
+  },
+  {
+    "slug": "white-oak-office-desk",
+    "sku": "FF-214",
+    "name": "White Oak Office Desk",
+    "category": "office",
+    "room": "office",
+    "image": "public/assets/img/gallery/white-oak-office-desk-lux4-960.webp"
+  },
+  {
+    "slug": "oval-cane-back-dining-set",
+    "sku": "FF-215",
+    "name": "Oval Cane-Back Dining Set",
+    "category": "dining",
+    "room": "dining",
+    "image": "public/assets/img/gallery/oval-cane-back-dining-set-lux4-960.webp"
+  },
+  {
+    "slug": "grey-study-desk",
+    "sku": "FF-216",
+    "name": "Grey Study Desk",
+    "category": "office",
+    "room": "office",
+    "image": "public/assets/img/gallery/grey-study-desk-lux4-960.webp"
+  },
+  {
+    "slug": "white-desk-with-shelving",
+    "sku": "FF-217",
+    "name": "White Desk with Shelving",
+    "category": "office",
+    "room": "office",
+    "image": "public/assets/img/gallery/white-desk-with-shelving-lux4-960.webp"
+  },
+  {
+    "slug": "green-armchair-pair",
+    "sku": "FF-218",
+    "name": "Green Armchair Pair",
+    "category": "chairs",
+    "room": "living",
+    "image": "public/assets/img/gallery/green-armchair-pair-lux4-960.webp"
+  },
+  {
+    "slug": "oak-wardrobe",
+    "sku": "FF-219",
+    "name": "Oak Wardrobe",
+    "category": "storage",
+    "room": "bedroom",
+    "image": "public/assets/img/gallery/oak-wardrobe-lux4-960.webp"
+  },
+  {
+    "slug": "brown-leather-executive-chair",
+    "sku": "FF-220",
+    "name": "Brown Leather Executive Chair",
+    "category": "office",
+    "room": "office",
+    "image": "public/assets/img/gallery/brown-leather-executive-chair-lux4-960.webp"
+  },
+  {
+    "slug": "executive-desk-with-side-return",
+    "sku": "FF-221",
+    "name": "Executive Desk with Side Return",
+    "category": "office",
+    "room": "office",
+    "image": "public/assets/img/gallery/executive-desk-with-side-return-lux4-960.webp"
+  },
+  {
+    "slug": "grey-velvet-corner-sofa",
+    "sku": "FF-222",
+    "name": "Grey Velvet Corner Sofa",
+    "category": "sofas",
+    "room": "living",
+    "image": "public/assets/img/gallery/grey-velvet-corner-sofa-lux4-960.webp"
+  },
+  {
+    "slug": "wall-shelf-with-clock",
+    "sku": "FF-223",
+    "name": "Wall Shelf with Clock",
+    "category": "storage",
+    "room": "living",
+    "image": "public/assets/img/gallery/wall-shelf-with-clock-lux4-960.webp"
+  },
+  {
+    "slug": "grey-upholstered-bed",
+    "sku": "FF-224",
+    "name": "Grey Upholstered Bed",
+    "category": "bedroom",
+    "room": "bedroom",
+    "image": "public/assets/img/gallery/grey-upholstered-bed-lux4-960.webp"
+  },
+  {
+    "slug": "dark-wood-dining-set",
+    "sku": "FF-225",
+    "name": "Dark Wood Dining Set",
+    "category": "dining",
+    "room": "dining",
+    "image": "public/assets/img/gallery/dark-wood-dining-set-lux4-960.webp"
+  },
+  {
+    "slug": "cream-channel-armchair",
+    "sku": "FF-226",
+    "name": "Cream Channel Armchair",
+    "category": "chairs",
+    "room": "living",
+    "image": "public/assets/img/gallery/cream-channel-armchair-lux4-960.webp"
+  },
+  {
+    "slug": "blue-velvet-wing-chair",
+    "sku": "FF-227",
+    "name": "Blue Velvet Wing Chair",
+    "category": "chairs",
+    "room": "living",
+    "image": "public/assets/img/gallery/blue-velvet-wing-chair-lux4-960.webp"
+  },
+  {
+    "slug": "wood-bed-with-led-lighting",
+    "sku": "FF-228",
+    "name": "Wood Bed with LED Lighting",
+    "category": "bedroom",
+    "room": "bedroom",
+    "image": "public/assets/img/gallery/wood-bed-with-led-lighting-lux4-960.webp"
+  },
+  {
+    "slug": "wood-dining-set-with-beige-chairs",
+    "sku": "FF-229",
+    "name": "Wood Dining Set with Beige Chairs",
+    "category": "dining",
+    "room": "dining",
+    "image": "public/assets/img/gallery/wood-dining-set-with-beige-chairs-lux4-960.webp"
+  },
+  {
+    "slug": "grey-and-oak-office-desk",
+    "sku": "FF-230",
+    "name": "Grey and Oak Office Desk",
+    "category": "office",
+    "room": "office",
+    "image": "public/assets/img/gallery/grey-and-oak-office-desk-lux4-960.webp"
+  },
+  {
+    "slug": "white-open-wardrobe",
+    "sku": "FF-231",
+    "name": "White Open Wardrobe",
+    "category": "storage",
+    "room": "bedroom",
+    "image": "public/assets/img/gallery/white-open-wardrobe-lux4-960.webp"
+  },
+  {
+    "slug": "green-wardrobe",
+    "sku": "FF-232",
+    "name": "Green Wardrobe",
+    "category": "storage",
+    "room": "bedroom",
+    "image": "public/assets/img/gallery/green-wardrobe-lux4-960.webp"
+  },
+  {
+    "slug": "grey-executive-desk",
+    "sku": "FF-233",
+    "name": "Grey Executive Desk",
+    "category": "office",
+    "room": "office",
+    "image": "public/assets/img/gallery/grey-executive-desk-lux4-960.webp"
+  },
+  {
+    "slug": "cream-built-in-shelving",
+    "sku": "FF-234",
+    "name": "Cream Built-In Shelving",
+    "category": "storage",
+    "room": "living",
+    "image": "public/assets/img/gallery/cream-built-in-shelving-lux4-960.webp"
+  },
+  {
+    "slug": "beige-upholstered-bed",
+    "sku": "FF-235",
+    "name": "Beige Upholstered Bed",
+    "category": "bedroom",
+    "room": "bedroom",
+    "image": "public/assets/img/gallery/beige-upholstered-bed-lux4-960.webp"
+  },
+  {
+    "slug": "cream-curved-armchair",
+    "sku": "FF-236",
+    "name": "Cream Curved Armchair",
+    "category": "chairs",
+    "room": "living",
+    "image": "public/assets/img/gallery/cream-curved-armchair-lux4-960.webp"
+  },
+  {
+    "slug": "vintage-brown-leather-sofa",
+    "sku": "FF-237",
+    "name": "Vintage Brown Leather Sofa",
+    "category": "sofas",
+    "room": "living",
+    "image": "public/assets/img/gallery/vintage-brown-leather-sofa-lux4-960.webp"
+  },
+  {
+    "slug": "black-leather-executive-chair",
+    "sku": "FF-238",
+    "name": "Black Leather Executive Chair",
+    "category": "office",
+    "room": "office",
+    "image": "public/assets/img/gallery/black-leather-executive-chair-lux4-960.webp"
+  },
+  {
+    "slug": "wood-dining-set-with-upholstered-chairs",
+    "sku": "FF-239",
+    "name": "Wood Dining Set with Upholstered Chairs",
+    "category": "dining",
+    "room": "dining",
+    "image": "public/assets/img/gallery/wood-dining-set-with-upholstered-chairs-lux4-960.webp"
+  },
+  {
+    "slug": "upholstered-bed-with-wood-trim",
+    "sku": "FF-240",
+    "name": "Upholstered Bed with Wood Trim",
+    "category": "bedroom",
+    "room": "bedroom",
+    "image": "public/assets/img/gallery/upholstered-bed-with-wood-trim-lux4-960.webp"
+  },
+  {
+    "slug": "black-and-white-executive-desk",
+    "sku": "FF-241",
+    "name": "Black and White Executive Desk",
+    "category": "office",
+    "room": "office",
+    "image": "public/assets/img/gallery/black-and-white-executive-desk-lux4-960.webp"
+  },
+  {
+    "slug": "white-frame-office-chair",
+    "sku": "FF-242",
+    "name": "White Frame Office Chair",
+    "category": "office",
+    "room": "office",
+    "image": "public/assets/img/gallery/white-frame-office-chair-lux4-960.webp"
+  },
+  {
+    "slug": "marble-dining-set-with-beige-chairs",
+    "sku": "FF-243",
+    "name": "Marble Dining Set with Beige Chairs",
+    "category": "dining",
+    "room": "dining",
+    "image": "public/assets/img/gallery/marble-dining-set-with-beige-chairs-lux4-960.webp"
+  },
+  {
+    "slug": "round-marble-dining-set",
+    "sku": "FF-244",
+    "name": "Round Marble Dining Set",
+    "category": "dining",
+    "room": "dining",
+    "image": "public/assets/img/gallery/round-marble-dining-set-lux4-960.webp"
+  },
+  {
+    "slug": "grey-tall-headboard-bed",
+    "sku": "FF-245",
+    "name": "Grey Tall-Headboard Bed",
+    "category": "bedroom",
+    "room": "bedroom",
+    "image": "public/assets/img/gallery/grey-tall-headboard-bed-lux4-960.webp"
+  },
+  {
+    "slug": "beige-fabric-sofa-set",
+    "sku": "FF-246",
+    "name": "Beige Fabric Sofa Set",
+    "category": "sofas",
+    "room": "living",
+    "image": "public/assets/img/gallery/beige-fabric-sofa-set-lux4-960.webp"
+  },
+  {
+    "slug": "cream-upholstered-dining-set",
+    "sku": "FF-247",
+    "name": "Cream Upholstered Dining Set",
+    "category": "dining",
+    "room": "dining",
+    "image": "public/assets/img/gallery/cream-upholstered-dining-set-lux4-960.webp"
+  },
+  {
+    "slug": "two-tone-leather-sofa",
+    "sku": "FF-248",
+    "name": "Two-Tone Leather Sofa",
+    "category": "sofas",
+    "room": "living",
+    "image": "public/assets/img/gallery/two-tone-leather-sofa-lux4-960.webp"
+  },
+  {
+    "slug": "curved-wood-accent-chair",
+    "sku": "FF-249",
+    "name": "Curved Wood Accent Chair",
+    "category": "chairs",
+    "room": "living",
+    "image": "public/assets/img/gallery/curved-wood-accent-chair-lux4-960.webp"
+  },
+  {
+    "slug": "pedestal-round-dining-set",
+    "sku": "FF-250",
+    "name": "Pedestal Round Dining Set",
+    "category": "dining",
+    "room": "dining",
+    "image": "public/assets/img/gallery/pedestal-round-dining-set-lux4-960.webp"
+  },
+  {
+    "slug": "oval-meeting-desk",
+    "sku": "FF-251",
+    "name": "Oval Meeting Desk",
+    "category": "office",
+    "room": "office",
+    "image": "public/assets/img/gallery/oval-meeting-desk-lux4-960.webp"
+  },
+  {
+    "slug": "l-shaped-executive-desk",
+    "sku": "FF-252",
+    "name": "L-Shaped Executive Desk",
+    "category": "office",
+    "room": "office",
+    "image": "public/assets/img/gallery/l-shaped-executive-desk-lux4-960.webp"
+  },
+  {
+    "slug": "white-bookshelf",
+    "sku": "FF-253",
+    "name": "White Bookshelf",
+    "category": "storage",
+    "room": "living",
+    "image": "public/assets/img/gallery/white-bookshelf-lux4-960.webp"
+  },
+  {
+    "slug": "marble-dining-set-for-six",
+    "sku": "FF-254",
+    "name": "Marble Dining Set for Six",
+    "category": "dining",
+    "room": "dining",
+    "image": "public/assets/img/gallery/marble-dining-set-for-six-lux4-960.webp"
+  },
+  {
+    "slug": "teal-channel-armchair",
+    "sku": "FF-255",
+    "name": "Teal Channel Armchair",
+    "category": "chairs",
+    "room": "living",
+    "image": "public/assets/img/gallery/teal-channel-armchair-lux4-960.webp"
+  },
+  {
+    "slug": "white-reception-desk",
+    "sku": "FF-256",
+    "name": "White Reception Desk",
+    "category": "office",
+    "room": "office",
+    "image": "public/assets/img/gallery/white-reception-desk-lux4-960.webp"
+  },
+  {
+    "slug": "cream-showroom-sofa-set",
+    "sku": "FF-257",
+    "name": "Cream Showroom Sofa Set",
+    "category": "sofas",
+    "room": "living",
+    "image": "public/assets/img/gallery/cream-showroom-sofa-set-lux4-960.webp"
+  },
+  {
+    "slug": "wood-dining-set-with-brown-chairs",
+    "sku": "FF-258",
+    "name": "Wood Dining Set with Brown Chairs",
+    "category": "dining",
+    "room": "dining",
+    "image": "public/assets/img/gallery/wood-dining-set-with-brown-chairs-lux4-960.webp"
+  },
+  {
+    "slug": "blue-channel-tufted-bed",
+    "sku": "FF-259",
+    "name": "Blue Channel-Tufted Bed",
+    "category": "bedroom",
+    "room": "bedroom",
+    "image": "public/assets/img/gallery/blue-channel-tufted-bed-lux4-960.webp"
+  },
+  {
+    "slug": "wood-and-cream-bed",
+    "sku": "FF-260",
+    "name": "Wood and Cream Bed",
+    "category": "bedroom",
+    "room": "bedroom",
+    "image": "public/assets/img/gallery/wood-and-cream-bed-lux4-960.webp"
+  },
+  {
+    "slug": "cream-coffee-table",
+    "sku": "FF-261",
+    "name": "Cream Coffee Table",
+    "category": "tables",
+    "room": "living",
+    "image": "public/assets/img/gallery/cream-coffee-table-lux4-960.webp"
+  },
+  {
+    "slug": "round-oak-dining-set",
+    "sku": "FF-262",
+    "name": "Round Oak Dining Set",
+    "category": "dining",
+    "room": "dining",
+    "image": "public/assets/img/gallery/round-oak-dining-set-lux4-960.webp"
+  },
+  {
+    "slug": "wood-dining-set-for-eight",
+    "sku": "FF-263",
+    "name": "Wood Dining Set for Eight",
+    "category": "dining",
+    "room": "dining",
+    "image": "public/assets/img/gallery/wood-dining-set-for-eight-lux4-960.webp"
+  },
+  {
+    "slug": "grey-wall-shelf",
+    "sku": "FF-264",
+    "name": "Grey Wall Shelf",
+    "category": "storage",
+    "room": "living",
+    "image": "public/assets/img/gallery/grey-wall-shelf-lux4-960.webp"
+  },
+  {
+    "slug": "dark-wood-dining-set-for-eight",
+    "sku": "FF-265",
+    "name": "Dark Wood Dining Set for Eight",
+    "category": "dining",
+    "room": "dining",
+    "image": "public/assets/img/gallery/dark-wood-dining-set-for-eight-lux4-960.webp"
+  },
+  {
+    "slug": "dark-wood-dining-set-with-bench",
+    "sku": "FF-266",
+    "name": "Dark Wood Dining Set with Bench",
+    "category": "dining",
+    "room": "dining",
+    "image": "public/assets/img/gallery/dark-wood-dining-set-with-bench-lux4-960.webp"
+  },
+  {
+    "slug": "tan-channel-dining-chair",
+    "sku": "FF-267",
+    "name": "Tan Channel Dining Chair",
+    "category": "chairs",
+    "room": "dining",
+    "image": "public/assets/img/gallery/tan-channel-dining-chair-lux4-960.webp"
+  },
+  {
+    "slug": "cream-dining-chair",
+    "sku": "FF-268",
+    "name": "Cream Dining Chair",
+    "category": "chairs",
+    "room": "dining",
+    "image": "public/assets/img/gallery/cream-dining-chair-lux4-960.webp"
+  },
+  {
+    "slug": "brown-conference-chair",
+    "sku": "FF-269",
+    "name": "Brown Conference Chair",
+    "category": "office",
+    "room": "office",
+    "image": "public/assets/img/gallery/brown-conference-chair-lux4-960.webp"
+  },
+  {
+    "slug": "cream-curved-conversation-set",
+    "sku": "FF-270",
+    "name": "Cream Curved Conversation Set",
+    "category": "sofas",
+    "room": "living",
+    "image": "public/assets/img/gallery/cream-curved-conversation-set-lux4-960.webp"
+  },
+  {
+    "slug": "white-desk-with-wood-drawer",
+    "sku": "FF-271",
+    "name": "White Desk with Wood Drawer",
+    "category": "office",
+    "room": "office",
+    "image": "public/assets/img/gallery/white-desk-with-wood-drawer-lux4-960.webp"
+  },
+  {
+    "slug": "grey-two-seat-sofa",
+    "sku": "FF-272",
+    "name": "Grey Two-Seat Sofa",
+    "category": "sofas",
+    "room": "living",
+    "image": "public/assets/img/gallery/grey-two-seat-sofa-lux4-960.webp"
+  },
+  {
+    "slug": "white-ladder-bookshelf",
+    "sku": "FF-273",
+    "name": "White Ladder Bookshelf",
+    "category": "storage",
+    "room": "living",
+    "image": "public/assets/img/gallery/white-ladder-bookshelf-lux4-960.webp"
+  },
+  {
+    "slug": "round-walnut-dining-set",
+    "sku": "FF-274",
+    "name": "Round Walnut Dining Set",
+    "category": "dining",
+    "room": "dining",
+    "image": "public/assets/img/gallery/round-walnut-dining-set-lux4-960.webp"
+  },
+  {
+    "slug": "brown-curved-boucl-sofa",
+    "sku": "FF-275",
+    "name": "Brown Curved Bouclé Sofa",
+    "category": "sofas",
+    "room": "living",
+    "image": "public/assets/img/gallery/brown-curved-boucl-sofa-lux4-960.webp"
+  },
+  {
+    "slug": "cream-display-cabinet",
+    "sku": "FF-276",
+    "name": "Cream Display Cabinet",
+    "category": "storage",
+    "room": "dining",
+    "image": "public/assets/img/gallery/cream-display-cabinet-lux4-960.webp"
+  },
+  {
+    "slug": "grey-sofa-with-ottoman",
+    "sku": "FF-277",
+    "name": "Grey Sofa with Ottoman",
+    "category": "sofas",
+    "room": "living",
+    "image": "public/assets/img/gallery/grey-sofa-with-ottoman-lux4-960.webp"
+  },
+  {
+    "slug": "sand-three-seat-sofa",
+    "sku": "FF-278",
+    "name": "Sand Three-Seat Sofa",
+    "category": "sofas",
+    "room": "living",
+    "image": "public/assets/img/gallery/sand-three-seat-sofa-lux4-960.webp"
+  },
+  {
+    "slug": "two-tone-wardrobe",
+    "sku": "FF-279",
+    "name": "Two-Tone Wardrobe",
+    "category": "storage",
+    "room": "bedroom",
+    "image": "public/assets/img/gallery/two-tone-wardrobe-lux4-960.webp"
+  },
+  {
+    "slug": "grey-wardrobe-with-desk-nook",
+    "sku": "FF-280",
+    "name": "Grey Wardrobe with Desk Nook",
+    "category": "storage",
+    "room": "bedroom",
+    "image": "public/assets/img/gallery/grey-wardrobe-with-desk-nook-lux4-960.webp"
+  },
+  {
+    "slug": "grey-channel-bed-with-ottoman",
+    "sku": "FF-281",
+    "name": "Grey Channel Bed with Ottoman",
+    "category": "bedroom",
+    "room": "bedroom",
+    "image": "public/assets/img/gallery/grey-channel-bed-with-ottoman-lux4-960.webp"
+  },
+  {
+    "slug": "open-oak-shelving-unit",
+    "sku": "FF-282",
+    "name": "Open Oak Shelving Unit",
+    "category": "storage",
+    "room": "living",
+    "image": "public/assets/img/gallery/open-oak-shelving-unit-lux4-960.webp"
+  },
+  {
+    "slug": "oak-desk-with-drawers",
+    "sku": "FF-283",
+    "name": "Oak Desk with Drawers",
+    "category": "office",
+    "room": "office",
+    "image": "public/assets/img/gallery/oak-desk-with-drawers-lux4-960.webp"
+  },
+  {
+    "slug": "cream-built-in-desk",
+    "sku": "FF-284",
+    "name": "Cream Built-In Desk",
+    "category": "office",
+    "room": "office",
+    "image": "public/assets/img/gallery/cream-built-in-desk-lux4-960.webp"
+  },
+  {
+    "slug": "white-wall-shelf",
+    "sku": "FF-285",
+    "name": "White Wall Shelf",
+    "category": "storage",
+    "room": "living",
+    "image": "public/assets/img/gallery/white-wall-shelf-lux4-960.webp"
+  },
+  {
+    "slug": "grey-curved-boucl-sectional",
+    "sku": "FF-286",
+    "name": "Grey Curved Bouclé Sectional",
+    "category": "sofas",
+    "room": "living",
+    "image": "public/assets/img/gallery/grey-curved-boucl-sectional-lux4-960.webp"
+  },
+  {
+    "slug": "red-banquet-chair",
+    "sku": "FF-287",
+    "name": "Red Banquet Chair",
+    "category": "chairs",
+    "room": "dining",
+    "image": "public/assets/img/gallery/red-banquet-chair-lux4-960.webp"
+  },
+  {
+    "slug": "brown-channel-bed-with-led",
+    "sku": "FF-288",
+    "name": "Brown Channel Bed with LED",
+    "category": "bedroom",
+    "room": "bedroom",
+    "image": "public/assets/img/gallery/brown-channel-bed-with-led-lux4-960.webp"
+  },
+  {
+    "slug": "cream-curved-sectional",
+    "sku": "FF-289",
+    "name": "Cream Curved Sectional",
+    "category": "sofas",
+    "room": "living",
+    "image": "public/assets/img/gallery/cream-curved-sectional-lux4-960.webp"
+  },
+  {
+    "slug": "cream-cloud-bed",
+    "sku": "FF-290",
+    "name": "Cream Cloud Bed",
+    "category": "bedroom",
+    "room": "bedroom",
+    "image": "public/assets/img/gallery/cream-cloud-bed-lux4-960.webp"
+  },
+  {
+    "slug": "cream-sofa-with-coffee-table",
+    "sku": "FF-291",
+    "name": "Cream Sofa with Coffee Table",
+    "category": "sofas",
+    "room": "living",
+    "image": "public/assets/img/gallery/cream-sofa-with-coffee-table-lux4-960.webp"
+  },
+  {
+    "slug": "white-marble-top-tv-console",
+    "sku": "FF-292",
+    "name": "White Marble-Top TV Console",
+    "category": "tables",
+    "room": "living",
+    "image": "public/assets/img/gallery/white-marble-top-tv-console-lux4-960.webp"
+  },
+  {
+    "slug": "white-cantilever-chair",
+    "sku": "FF-293",
+    "name": "White Cantilever Chair",
+    "category": "office",
+    "room": "office",
+    "image": "public/assets/img/gallery/white-cantilever-chair-lux4-960.webp"
+  },
+  {
+    "slug": "beige-showroom-sofa-set",
+    "sku": "FF-294",
+    "name": "Beige Showroom Sofa Set",
+    "category": "sofas",
+    "room": "living",
+    "image": "public/assets/img/gallery/beige-showroom-sofa-set-lux4-960.webp"
+  },
+  {
+    "slug": "office-workstation-cluster",
+    "sku": "FF-295",
+    "name": "Office Workstation Cluster",
+    "category": "office",
+    "room": "office",
+    "image": "public/assets/img/gallery/office-workstation-cluster-lux4-960.webp"
+  },
+  {
+    "slug": "grey-mesh-office-chair",
+    "sku": "FF-296",
+    "name": "Grey Mesh Office Chair",
+    "category": "office",
+    "room": "office",
+    "image": "public/assets/img/gallery/grey-mesh-office-chair-lux4-960.webp"
+  },
+  {
+    "slug": "three-seat-reception-bench",
+    "sku": "FF-297",
+    "name": "Three-Seat Reception Bench",
+    "category": "office",
+    "room": "office",
+    "image": "public/assets/img/gallery/three-seat-reception-bench-lux4-960.webp"
+  },
+  {
+    "slug": "cream-curved-sofa-set",
+    "sku": "FF-298",
+    "name": "Cream Curved Sofa Set",
+    "category": "sofas",
+    "room": "living",
+    "image": "public/assets/img/gallery/cream-curved-sofa-set-lux4-960.webp"
+  },
+  {
+    "slug": "black-mesh-office-chair",
+    "sku": "FF-299",
+    "name": "Black Mesh Office Chair",
+    "category": "office",
+    "room": "office",
+    "image": "public/assets/img/gallery/black-mesh-office-chair-lux4-960.webp"
+  },
+  {
+    "slug": "black-and-gold-tv-console",
+    "sku": "FF-300",
+    "name": "Black and Gold TV Console",
+    "category": "tables",
+    "room": "living",
+    "image": "public/assets/img/gallery/black-and-gold-tv-console-lux4-960.webp"
+  },
+  {
+    "slug": "black-and-white-tv-console",
+    "sku": "FF-301",
+    "name": "Black and White TV Console",
+    "category": "tables",
+    "room": "living",
+    "image": "public/assets/img/gallery/black-and-white-tv-console-lux4-960.webp"
+  },
+  {
+    "slug": "cognac-executive-chair",
+    "sku": "FF-302",
+    "name": "Cognac Executive Chair",
+    "category": "office",
+    "room": "office",
+    "image": "public/assets/img/gallery/cognac-executive-chair-lux4-960.webp"
+  },
+  {
+    "slug": "black-and-silver-tv-console",
+    "sku": "FF-303",
+    "name": "Black and Silver TV Console",
+    "category": "tables",
+    "room": "living",
+    "image": "public/assets/img/gallery/black-and-silver-tv-console-lux4-960.webp"
+  },
+  {
+    "slug": "beige-sofa-with-coffee-tables",
+    "sku": "FF-304",
+    "name": "Beige Sofa with Coffee Tables",
+    "category": "sofas",
+    "room": "living",
+    "image": "public/assets/img/gallery/beige-sofa-with-coffee-tables-lux4-960.webp"
+  },
+  {
+    "slug": "sand-sofa-and-armchair-set",
+    "sku": "FF-305",
+    "name": "Sand Sofa and Armchair Set",
+    "category": "sofas",
+    "room": "living",
+    "image": "public/assets/img/gallery/sand-sofa-and-armchair-set-lux4-960.webp"
+  },
+  {
+    "slug": "yellow-office-chair",
+    "sku": "FF-306",
+    "name": "Yellow Office Chair",
+    "category": "office",
+    "room": "office",
+    "image": "public/assets/img/gallery/yellow-office-chair-lux4-960.webp"
+  },
+  {
+    "slug": "beige-channel-tufted-sofa-set",
+    "sku": "FF-307",
+    "name": "Beige Channel-Tufted Sofa Set",
+    "category": "sofas",
+    "room": "living",
+    "image": "public/assets/img/gallery/beige-channel-tufted-sofa-set-lux4-960.webp"
+  }
+]

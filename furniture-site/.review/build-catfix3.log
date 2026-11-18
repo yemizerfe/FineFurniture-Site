@@ -1,0 +1,8 @@
+
+> finefurniture@2.0.0 build
+> node tools/build.mjs
+
+site.min.css         155.5 kB raw    28.6 kB gzip    23.9 kB br
+site.min.js          201.2 kB raw    59.9 kB gzip    49.0 kB br
+dist/worker.js       125.6 kB raw    29.0 kB gzip    24.8 kB br
+build complete

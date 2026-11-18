@@ -1,0 +1,18 @@
+// Local development config. The deployed Worker is configured by Freebuff Sites.
+{
+  "name": "personal-blog-api",
+  "main": "src/index.js",
+  "compatibility_date": "2025-06-01",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "personal-blog-api-db",
+      "database_id": "b8ca9f77-55a5-4b52-8fcc-2019d9195f3b",
+      "preview_database_id": "b8ca9f77-55a5-4b52-8fcc-2019d9195f3b"
+    }
+  ]
+}

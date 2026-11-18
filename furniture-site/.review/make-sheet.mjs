@@ -1,0 +1,5 @@
+import fs from 'node:fs';
+const ids = `12497935 6835141 17709301 39729331 36777936 25461446 6368796 7877479 38773097 5002337 1648776 7546321 7045703 7214171 30380631 30350489 6707628 28853362 15443243 5853834 8135273 30183164 8135267 8082565 6312357 6438748 6970075 8082231 26556326 6903206 6466237 8135103 3144580 5531715 262048 2747901 14558366 5677020 6758282 7195598 8583876 22696776 39829291 5178045 33488358 22696775 34984437 12277013 35888450 2883049 6963809 19878531 24245782 6963783`.split(/\s+/);
+const cards = ids.map((id,i)=>`<figure><img loading="lazy" src="/assets/cand/${id}.jpg" alt=""><figcaption>${i+1} &middot; ${id}</figcaption></figure>`).join('\n');
+fs.writeFileSync('public/candidates.html', `<!doctype html><meta charset="utf-8"><title>Candidate images</title><style>body{margin:0;background:#eee;font:13px Arial;padding:12px}.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}figure{margin:0;background:#fff;padding:5px}img{width:100%;height:210px;object-fit:cover;display:block}figcaption{padding:5px 2px;color:#333}</style><div class="grid">${cards}</div>`);
+console.log(ids.length);

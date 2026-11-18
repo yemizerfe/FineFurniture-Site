@@ -1,0 +1,4 @@
+WARNING: Target directory /workspace/chats/a95274a886c13924e736b5e0/furniture-site/.review/pylibs/bin already exists. Specify --upgrade to force replacement.
+
+[notice] A new release of pip is available: 26.2.2 -> 26.3
+[notice] To update, run: /opt/freestyle/python/bin/python3 -m pip install --upgrade pip

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="Fine Furniture">
+  <defs>
+    <linearGradient id="ffGold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6dc95" />
+      <stop offset=".42" stop-color="#d8a94a" />
+      <stop offset=".72" stop-color="#b47f24" />
+      <stop offset="1" stop-color="#e9c877" />
+    </linearGradient>
+    <linearGradient id="ffPurple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a91fae" />
+      <stop offset=".55" stop-color="#7a1189" />
+      <stop offset="1" stop-color="#4b0a5c" />
+    </linearGradient>
+    <radialGradient id="ffPaper" cx=".5" cy=".32" r=".82">
+      <stop offset="0" stop-color="#fffdf8" />
+      <stop offset=".7" stop-color="#fbf3e6" />
+      <stop offset="1" stop-color="#efe1cb" />
+    </radialGradient>
+  </defs>
+
+  <circle cx="100" cy="100" r="99" fill="url(#ffGold)" />
+  <circle cx="100" cy="100" r="91" fill="url(#ffPurple)" />
+  <circle cx="100" cy="100" r="87" fill="url(#ffGold)" />
+  <circle cx="100" cy="100" r="80" fill="url(#ffPaper)" />
+
+  <!-- roof -->
+  <path d="M52 100 100 54l48 46" fill="none" stroke="url(#ffPurple)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M70 78V64h11v5" fill="none" stroke="url(#ffPurple)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+  <rect x="92" y="66" width="16" height="16" rx="1.5" fill="none" stroke="#d8a94a" stroke-width="4" />
+  <path d="M100 66v16M92 74h16" stroke="#d8a94a" stroke-width="3" />
+
+  <!-- ribbon sweeping behind the monogram -->
+  <path d="M60 150c22 6 40-2 48-16 8-13 20-18 34-15-11 4-19 12-24 23-8 18-30 26-58 18z" fill="url(#ffPurple)" opacity=".92" />
+  <path d="M62 145c20 5 36-2 43-14 7-12 18-17 31-15" fill="none" stroke="#f6dc95" stroke-width="2.4" opacity=".7" />
+
+  <!-- FF monogram -->
+  <text x="100" y="140" text-anchor="middle" font-family="'Fraunces', 'Playfair Display', Georgia, 'Times New Roman', serif" font-size="66" font-weight="700" fill="url(#ffGold)" stroke="#6d4a12" stroke-width="1.4" letter-spacing="-3">FF</text>
+
+  <!-- sell point -->
+  <path d="M78 158h44" stroke="#7a1189" stroke-width="2.6" stroke-linecap="round" opacity=".55" />
+</svg>

@@ -1,0 +1,30 @@
+PASS total 107
+PASS all products returned across pages
+PASS unique slugs
+PASS unique names
+counts {
+  sofas: 20,
+  chairs: 22,
+  tables: 21,
+  dining: 18,
+  bedroom: 11,
+  storage: 15
+}
+PASS category counts sum
+room living 40
+room bedroom 17
+room dining 24
+room office 26
+PASS bedroom filter only beds
+PASS search sofa 17
+PASS all 107 product images 200
+PASS all 107 product pages render name
+PASS amharic taglines localised
+PASS sitemap 107 products
+PASS sitemap categories
+PASS sitemap xml type
+PASS robots sitemap
+PASS /admin 404
+PASS contact has no callback form
+PASS shop page renders
+ALL LOCAL SMOKE CHECKS PASSED

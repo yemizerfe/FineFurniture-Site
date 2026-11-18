@@ -1,0 +1,44 @@
+<section class="card card-profile">
+  <div class="profile-head">
+    <div class="avatar" aria-hidden="true">{{user.initials}}</div>
+    <div class="profile-id">
+      <h1>{{user.username}}</h1>
+      <p class="sub">Signed in. This is everything the account holds.</p>
+    </div>
+  </div>
+
+  <dl class="details">
+    <div class="detail">
+      <dt>Username</dt>
+      <dd id="profile-username">{{user.username}}</dd>
+    </div>
+    <div class="detail">
+      <dt>Email</dt>
+      <dd id="profile-email">{{user.email}}</dd>
+    </div>
+    <div class="detail">
+      <dt>Member since</dt>
+      <dd>{{user.joined}}</dd>
+    </div>
+    <div class="detail">
+      <dt>Account id</dt>
+      <dd class="mono">#{{user.id}}</dd>
+    </div>
+  </dl>
+
+  <div class="card-foot">
+    <span class="pill pill-ok">Authenticated</span>
+    <span class="foot-text">Session expires {{session_expires}} · cookie is <code>HttpOnly</code></span>
+  </div>
+</section>
+
+<aside class="side-note">
+  <p class="side-title">Next</p>
+  <p class="side-text">
+    This page only renders when a valid session cookie resolves to a row in the
+    <code>sessions</code> table. Without a cookie you are redirected to the login page.
+  </p>
+  <form method="post" action="/logout">
+    <button class="btn btn-ghost btn-small" type="submit">Log out</button>
+  </form>
+</aside>

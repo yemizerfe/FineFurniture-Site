@@ -1,0 +1,29 @@
+// Local development only. Deployed configuration is created by sites_deploy.
+{
+  "name": "finefurniture-local",
+  "main": "worker.js",
+  "compatibility_date": "2025-06-01",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "finefurniture-local",
+      "database_id": "00000000-0000-0000-0000-000000000000"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "FILES",
+      "bucket_name": "finefurniture-local-media"
+    }
+  ],
+  "vars": {
+    "FREEBUFF_CLIENT_ID": "e9f78e67-7fda-4aad-8e92-6d88e2e2d43f",
+    "FREEBUFF_ISSUER": "https://freebuff.com/oidc",
+    "APP_ORIGIN": "http://localhost:8787"
+  }
+}

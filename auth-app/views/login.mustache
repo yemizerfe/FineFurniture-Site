@@ -1,0 +1,54 @@
+<section class="card">
+  <div class="card-head">
+    <h1>Welcome back</h1>
+    <p class="sub">Log in with your username or your email address.</p>
+  </div>
+
+  {{#error}}
+  <div class="alert alert-error" role="alert">
+    <span class="alert-icon" aria-hidden="true">!</span>
+    <span>{{error}}</span>
+  </div>
+  {{/error}}
+
+  {{#notice}}
+  <div class="alert alert-info" role="status">
+    <span class="alert-icon" aria-hidden="true">✓</span>
+    <span>{{notice}}</span>
+  </div>
+  {{/notice}}
+
+  <form method="post" action="/login" class="form" autocomplete="on">
+    <div class="field{{#field_is_identifier}} field-invalid{{/field_is_identifier}}">
+      <label for="identifier">Username or email</label>
+      <input
+        id="identifier"
+        name="identifier"
+        type="text"
+        value="{{values.identifier}}"
+        placeholder="ada_lovelace or ada@example.com"
+        autocomplete="username"
+        maxlength="320"
+        required
+        autofocus
+      />
+    </div>
+
+    <div class="field{{#field_is_password}} field-invalid{{/field_is_password}}">
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" autocomplete="current-password" required />
+    </div>
+
+    <button class="btn btn-primary btn-block" type="submit">Log in</button>
+  </form>
+
+  <p class="alt">New here? <a href="/signup">Create an account</a></p>
+</section>
+
+<aside class="side-note">
+  <p class="side-title">Sessions</p>
+  <p class="side-text">
+    Logging in sets an <code>HttpOnly</code>, <code>SameSite=Lax</code> cookie tied to a row in the
+    database. Logging out deletes that row, so the cookie stops working immediately.
+  </p>
+</aside>

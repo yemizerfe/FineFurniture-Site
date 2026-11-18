@@ -1,0 +1,19 @@
+{
+  "name": "personal-blog-api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "REST API for CRUD on a single blogger's articles, running on Cloudflare Workers + D1.",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "dev": "wrangler dev --port 8787 --local",
+    "test": "node scripts/smoke-test.js"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "wrangler": "^4.156.0"
+  },
+  "dependencies": {
+    "jsdom": "^30.1.3"
+  }
+}
