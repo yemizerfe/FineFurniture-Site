@@ -1,7 +1,0 @@
-files 112
-
-EXACT DUPLICATES
-photo_2026-11-16_21-52-37.jpg  ||  photo_2026-11-16_21-53-03.jpg
-photo_2026-11-16_21-53-30.jpg  ||  photo_2026-11-16_21-54-11.jpg
-
-NEAR DUPLICATES (dhash <= 6)

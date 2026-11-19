@@ -1,19 +1,19 @@
 {
-  "name": "personal-blog-api",
-  "version": "1.0.0",
+  "name": "finefurniture",
+  "version": "2.0.0",
   "private": true,
   "type": "module",
-  "description": "REST API for CRUD on a single blogger's articles, running on Cloudflare Workers + D1.",
+  "description": "FineFurniture \u2014 a curated furniture gallery in Debre Markos, Ethiopia. Cloudflare Workers + D1, no prices, no cart, no admin.",
   "scripts": {
-    "build": "node scripts/build.js",
-    "dev": "wrangler dev --port 8787 --local",
-    "test": "node scripts/smoke-test.js"
+    "dev": "wrangler dev --config wrangler.local.jsonc --port 8787 --local",
+    "build": "node tools/build.mjs",
+    "build:images": "node tools/build-images.mjs",
+    "build:fonts": "node tools/build-fonts.mjs",
+    "test": "node tools/check.mjs"
   },
   "devDependencies": {
     "esbuild": "^0.28.2",
-    "wrangler": "^4.156.0"
-  },
-  "dependencies": {
-    "jsdom": "^30.1.3"
+    "wrangler": "^4.60.0",
+    "sharp": "^0.35.5"
   }
 }

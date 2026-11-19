@@ -1,331 +1,64 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Personal Blog API — CRUD for one blogger's articles</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Fine Furniture Debre Markos | Showroom and workshop</title>
     <meta
       name="description"
-      content="A small REST API for a single blogger: create, read, update and delete articles, with tags, drafts and pagination."
+      content="Fine Furniture Debre Markos: three furniture showrooms in Ethiopia with leather sofas, oak and walnut tables, beds, wardrobes and hand-woven chairs, plus custom furniture. Call 0920 282861."
     />
-    <style>
-      :root {
-        --bg: #0b0d10;
-        --panel: #12161b;
-        --panel-2: #171c23;
-        --line: #242b35;
-        --text: #e8edf4;
-        --muted: #97a3b4;
-        --accent: #6ee7b7;
-        --accent-2: #60a5fa;
-        --amber: #fbbf24;
-        --red: #f87171;
-        --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
-      }
-      * { box-sizing: border-box; }
-      body {
-        margin: 0;
-        background:
-          radial-gradient(900px 480px at 12% -10%, rgba(96, 165, 250, 0.14), transparent 65%),
-          radial-gradient(760px 420px at 92% 0%, rgba(110, 231, 183, 0.12), transparent 60%),
-          var(--bg);
-        color: var(--text);
-        font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-      }
-      a { color: var(--accent-2); }
-      .wrap { max-width: 980px; margin: 0 auto; padding: 56px 24px 96px; }
-      header .eyebrow {
-        font: 600 12px/1 var(--mono);
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        color: var(--accent);
-      }
-      h1 { font-size: clamp(30px, 5vw, 44px); line-height: 1.12; letter-spacing: -0.02em; margin: 14px 0 12px; }
-      .lede { color: var(--muted); max-width: 62ch; margin: 0 0 22px; }
-      .badges { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-      .pill {
-        display: inline-flex; align-items: center; gap: 8px;
-        font: 500 12.5px/1 var(--mono);
-        padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px;
-        background: var(--panel); color: var(--muted);
-      }
-      .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
-      .dot.ok { background: var(--accent); box-shadow: 0 0 10px rgba(110, 231, 183, 0.7); }
-      .dot.bad { background: var(--red); }
-      section { margin-top: 44px; }
-      h2 { font-size: 20px; letter-spacing: -0.01em; margin: 0 0 6px; }
-      .sub { color: var(--muted); margin: 0 0 18px; font-size: 14.5px; }
-      .card {
-        background: var(--panel); border: 1px solid var(--line); border-radius: 14px; overflow: hidden;
-      }
-      table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
-      th, td { text-align: left; padding: 11px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
-      th { font: 600 11px/1.4 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); background: var(--panel-2); }
-      tr:last-child td { border-bottom: 0; }
-      td.route code { font: 500 13px/1.4 var(--mono); color: var(--text); white-space: nowrap; }
-      td.desc { color: var(--muted); }
-      .m {
-        display: inline-block; min-width: 58px; text-align: center;
-        font: 700 10.5px/1 var(--mono); letter-spacing: 0.08em;
-        padding: 5px 7px; border-radius: 6px; border: 1px solid transparent;
-      }
-      .m.get { color: var(--accent-2); background: rgba(96, 165, 250, 0.12); border-color: rgba(96, 165, 250, 0.3); }
-      .m.post { color: var(--accent); background: rgba(110, 231, 183, 0.12); border-color: rgba(110, 231, 183, 0.3); }
-      .m.patch, .m.put { color: var(--amber); background: rgba(251, 191, 36, 0.12); border-color: rgba(251, 191, 36, 0.3); }
-      .m.delete { color: var(--red); background: rgba(248, 113, 113, 0.12); border-color: rgba(248, 113, 113, 0.3); }
-      pre {
-        margin: 0; padding: 16px 18px; overflow-x: auto;
-        background: #0d1116; border: 1px solid var(--line); border-radius: 12px;
-        font: 13px/1.65 var(--mono); color: #d5deea;
-      }
-      pre .c { color: #6b7a8d; }
-      pre .s { color: #a5e8c4; }
-      pre .k { color: #8ab6f6; }
-      .grid { display: grid; gap: 14px; grid-template-columns: 1fr; }
-      @media (min-width: 820px) { .grid.two { grid-template-columns: 1fr 1fr; } }
-      .btnrow { display: flex; flex-wrap: wrap; gap: 8px; padding: 16px; border-bottom: 1px solid var(--line); }
-      button {
-        font: 500 13px/1 var(--mono); color: var(--text); cursor: pointer;
-        background: var(--panel-2); border: 1px solid var(--line); border-radius: 9px; padding: 10px 13px;
-        transition: border-color 0.15s, transform 0.06s, background 0.15s;
-      }
-      button:hover { border-color: #38424f; background: #1b222b; }
-      button:active { transform: translateY(1px); }
-      button[data-method="POST"] { color: var(--accent); }
-      button[data-method="PATCH"], button[data-method="PUT"] { color: var(--amber); }
-      button[data-method="DELETE"] { color: var(--red); }
-      .log { max-height: 420px; overflow: auto; }
-      .log-head {
-        display: flex; justify-content: space-between; gap: 12px; align-items: center;
-        padding: 10px 16px; border-bottom: 1px solid var(--line);
-        font: 500 12px/1 var(--mono); color: var(--muted); background: var(--panel-2);
-      }
-      .status-ok { color: var(--accent); }
-      .status-err { color: var(--red); }
-      .log pre { border: 0; border-radius: 0; background: transparent; min-height: 120px; }
-      code.inline {
-        font: 500 12.5px/1 var(--mono); background: var(--panel-2);
-        border: 1px solid var(--line); border-radius: 5px; padding: 2px 6px;
-      }
-      ul.fields { margin: 0; padding: 14px 16px 14px 34px; color: var(--muted); font-size: 14.5px; }
-      ul.fields li { margin-bottom: 6px; }
-      ul.fields b { color: var(--text); font-family: var(--mono); font-weight: 500; font-size: 13px; }
-      footer { margin-top: 52px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13.5px; }
-    </style>
+    <meta name="theme-color" content="#f7f2ea" />
+    <meta name="format-detection" content="telephone=yes" />
+    <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Fine Furniture Debre Markos" />
+    <meta property="og:title" content="Fine Furniture Debre Markos | Showroom and workshop" />
+    <meta
+      property="og:description"
+      content="A curated furniture gallery in three showrooms in Debre Markos — leather, oak, walnut, linen and hand-woven cotton. Call 0920 282861."
+    />
+    <meta property="og:image" content="/assets/img/og-cover.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/img/gallery/vittoria-leather-sofa-lux3-1440.webp"
+      imagesrcset="/assets/img/gallery/vittoria-leather-sofa-lux3-480.webp 480w, /assets/img/gallery/vittoria-leather-sofa-lux3-960.webp 960w, /assets/img/gallery/vittoria-leather-sofa-lux3-1440.webp 1440w"
+      imagesizes="(max-width: 900px) 100vw, 46vw"
+      fetchpriority="high"
+    />
+    <link rel="stylesheet" href="/assets/css/site.min.css?v=c899606a" />
   </head>
   <body>
-    <div class="wrap">
-      <header>
-        <div class="eyebrow">Personal Blog API · v1.0.0</div>
-        <h1>CRUD for one blogger's articles.</h1>
-        <p class="lede">
-          A small JSON REST API backed by SQLite. Create drafts, publish posts, tag them, search them,
-          and read them back with pagination — all over plain HTTP.
+    <a class="skip" href="#app">Skip to content</a>
+    <div id="site-header"></div>
+    <main id="app" tabindex="-1"></main>
+    <div id="site-footer"></div>
+    <div id="overlays"></div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <nav class="mobile-bar" aria-label="Contact the shop">
+      <a class="call" href="tel:+251920282861">Call 0920 282861</a>
+      <a class="visit" href="/showroom">Visit a showroom</a>
+    </nav>
+    <noscript>
+      <div class="noscript">
+        <h1>Fine Furniture — Debre Markos</h1>
+        <p>
+          A curated furniture gallery in three showrooms in Debre Markos, Ethiopia: leather sofas, oak and walnut tables,
+          beds, wardrobes, sideboards and hand-woven chairs. Everything is collected from a showroom, and the workshop
+          makes pieces to your wall size. Call <a href="tel:+251920282861">0920 282861</a>, Monday to Saturday, 9:00–17:00.
         </p>
-        <div class="badges">
-          <span class="pill"><span id="health-dot" class="dot"></span><span id="health-text">checking…</span></span>
-          <span class="pill">base URL <code id="base" style="color:var(--text)"></code></span>
-          <span class="pill">CORS enabled</span>
-        </div>
-      </header>
-
-      <section>
-        <h2>Quick start</h2>
-        <p class="sub">Every response is JSON wrapped in <code class="inline">data</code>, with <code class="inline">error</code> for failures.</p>
-        <div class="grid two">
-          <pre><span class="c"># list published articles</span>
-curl <span class="s">"<span class="base-inline"></span>/api/articles?status=published&amp;limit=5"</span>
-
-<span class="c"># create a draft</span>
-curl -X POST <span class="s">"<span class="base-inline"></span>/api/articles"</span> \
-  -H <span class="s">"content-type: application/json"</span> \
-  -d <span class="s">'{
-    "title": "Notes on Edge Functions",
-    "content": "Cold starts, CPU budgets, and isolates.",
-    "tags": ["edge", "workers"],
-    "status": "draft"
-  }'</span></pre>
-          <pre><span class="c"># publish it (partial update by slug)</span>
-curl -X PATCH <span class="s">"<span class="base-inline"></span>/api/articles/notes-on-edge-functions"</span> \
-  -H <span class="s">"content-type: application/json"</span> \
-  -d <span class="s">'{"status": "published"}'</span>
-
-<span class="c"># search, then delete</span>
-curl <span class="s">"<span class="base-inline"></span>/api/articles?q=isolates"</span>
-curl -X DELETE <span class="s">"<span class="base-inline"></span>/api/articles/42"</span></pre>
-        </div>
-      </section>
-
-      <section>
-        <h2>Endpoints</h2>
-        <p class="sub">Look articles up by numeric id or by slug — both work anywhere <code class="inline">:idOrSlug</code> appears.</p>
-        <div class="card">
-          <table>
-            <thead>
-              <tr><th>Method</th><th>Route</th><th>What it does</th></tr>
-            </thead>
-            <tbody>
-              <tr><td><span class="m get">GET</span></td><td class="route"><code>/api/articles</code></td><td class="desc">List articles. Filters: <code class="inline">status</code>, <code class="inline">tag</code>, <code class="inline">q</code>; paging: <code class="inline">limit</code> (≤50), <code class="inline">offset</code>; sort: <code class="inline">newest|oldest|title|updated</code>.</td></tr>
-              <tr><td><span class="m post">POST</span></td><td class="route"><code>/api/articles</code></td><td class="desc">Create an article. Requires <code class="inline">title</code> and <code class="inline">content</code>. Returns 201 with a <code class="inline">Location</code> header.</td></tr>
-              <tr><td><span class="m get">GET</span></td><td class="route"><code>/api/articles/:idOrSlug</code></td><td class="desc">Fetch one article, including its full <code class="inline">content</code>.</td></tr>
-              <tr><td><span class="m patch">PATCH</span></td><td class="route"><code>/api/articles/:idOrSlug</code></td><td class="desc">Partially update: only the fields you send change. Publishing sets <code class="inline">published_at</code> once.</td></tr>
-              <tr><td><span class="m put">PUT</span></td><td class="route"><code>/api/articles/:idOrSlug</code></td><td class="desc">Replace the editable fields; <code class="inline">title</code> and <code class="inline">content</code> are required.</td></tr>
-              <tr><td><span class="m delete">DELETE</span></td><td class="route"><code>/api/articles/:idOrSlug</code></td><td class="desc">Delete an article permanently.</td></tr>
-              <tr><td><span class="m get">GET</span></td><td class="route"><code>/api/tags</code></td><td class="desc">All tags in use, with article counts.</td></tr>
-              <tr><td><span class="m get">GET</span></td><td class="route"><code>/api/blogger</code></td><td class="desc">The blogger's profile (name, bio, links).</td></tr>
-              <tr><td><span class="m put">PUT</span></td><td class="route"><code>/api/blogger</code></td><td class="desc">Update the profile fields you send.</td></tr>
-              <tr><td><span class="m get">GET</span></td><td class="route"><code>/api/health</code></td><td class="desc">Liveness probe plus article count.</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section>
-        <h2>Try it live</h2>
-        <p class="sub">Requests run against the real API and its database, from this page.</p>
-        <div class="card">
-          <div class="btnrow">
-            <button data-method="GET" data-path="/api/articles?limit=3&amp;sort=newest">GET /api/articles</button>
-            <button data-method="POST" data-path="/api/articles">POST /api/articles</button>
-            <button data-method="GET" data-path="/api/articles/hello-world-again">GET one by slug</button>
-            <button data-method="PATCH" data-path="/api/articles/hello-world-again">PATCH article</button>
-            <button data-method="GET" data-path="/api/tags">GET /api/tags</button>
-            <button data-method="GET" data-path="/api/blogger">GET /api/blogger</button>
-            <button data-method="POST" data-path="/api/articles/hello-world-again">POST (405?)</button>
-            <button data-method="DELETE" data-path="/api/articles/hello-world-again">DELETE article</button>
-          </div>
-          <div class="log-head">
-            <span id="req-label">no request sent yet</span>
-            <span id="req-status"></span>
-          </div>
-          <div class="log"><pre id="output">Pick a request above — the response body appears here.</pre></div>
-        </div>
-      </section>
-
-      <section>
-        <h2>Article shape</h2>
-        <div class="grid two">
-          <div class="card">
-            <ul class="fields">
-              <li><b>id</b> — integer primary key</li>
-              <li><b>title</b> — required, ≤ 200 chars</li>
-              <li><b>slug</b> — unique, generated from the title unless you send one</li>
-              <li><b>excerpt</b> — auto-derived from content when omitted</li>
-              <li><b>content</b> — required on create, plain text or markdown</li>
-              <li><b>tags</b> — array of up to 10 lowercase strings</li>
-              <li><b>status</b> — <code class="inline">draft</code> or <code class="inline">published</code></li>
-              <li><b>cover_image</b> — optional URL</li>
-              <li><b>published_at</b> — ISO 8601, set when first published</li>
-              <li><b>reading_minutes</b>, <b>word_count</b> — computed on read</li>
-            </ul>
-          </div>
-          <pre id="sample-json"><span class="c">// GET /api/articles/hello-world-again</span>
-{
-  <span class="k">"data"</span>: {
-    <span class="k">"id"</span>: 1,
-    <span class="k">"title"</span>: <span class="s">"Hello, World (Again)"</span>,
-    <span class="k">"slug"</span>: <span class="s">"hello-world-again"</span>,
-    <span class="k">"excerpt"</span>: <span class="s">"Why I am starting yet another blog…"</span>,
-    <span class="k">"tags"</span>: [<span class="s">"meta"</span>, <span class="s">"writing"</span>],
-    <span class="k">"status"</span>: <span class="s">"published"</span>,
-    <span class="k">"cover_image"</span>: null,
-    <span class="k">"reading_minutes"</span>: 1,
-    <span class="k">"published_at"</span>: <span class="s">"2026-01-12T09:00:00.000Z"</span>,
-    <span class="k">"url"</span>: <span class="s">"/api/articles/hello-world-again"</span>,
-    <span class="k">"content"</span>: <span class="s">"Every few years I wipe the archive…"</span>
-  }
-}</pre>
-        </div>
-      </section>
-
-      <section>
-        <h2>Errors</h2>
-        <p class="sub">
-          Failures return a matching HTTP status and a machine-readable code:
-          <code class="inline">bad_request</code>, <code class="inline">not_found</code>,
-          <code class="inline">conflict</code>, <code class="inline">method_not_allowed</code>,
-          <code class="inline">unsupported_media_type</code>, <code class="inline">payload_too_large</code>.
+        <p><a href="/shop">Browse the gallery</a> · <a href="/showroom">Showrooms</a> · <a href="/contact">Contact</a> · <a href="/privacy">Privacy</a></p>
+        <p lang="am">
+          ፋይን ፈርኒቸር — በደብረ ማርቆስ በሦስት ሾውሩሞች የተዘጋጀ የቤት ዕቃ ስብስብ። ስልክ፡ <a href="tel:+251920282861">0920 282861</a>።
         </p>
-        <pre>{
-  <span class="k">"error"</span>: {
-    <span class="k">"code"</span>: <span class="s">"bad_request"</span>,
-    <span class="k">"message"</span>: <span class="s">"\"title\" must be at most 200 characters."</span>,
-    <span class="k">"details"</span>: { <span class="k">"field"</span>: <span class="s">"title"</span> }
-  }
-}</pre>
-      </section>
-
-      <footer>
-        Personal Blog API — Cloudflare Worker + D1, one blogger, no accounts. Writes are open on this
-        demo deployment; add a bearer token before you point it at real content.
-      </footer>
-    </div>
-
-    <script>
-      const base = location.origin;
-      document.getElementById('base').textContent = base;
-      for (const el of document.querySelectorAll('.base-inline')) el.textContent = base;
-
-      const dot = document.getElementById('health-dot');
-      const healthText = document.getElementById('health-text');
-      fetch('/api/health')
-        .then((r) => r.json())
-        .then((body) => {
-          const ok = body?.data?.status === 'ok';
-          dot.classList.add(ok ? 'ok' : 'bad');
-          healthText.textContent = ok
-            ? 'online · ' + body.data.articles + ' articles'
-            : 'degraded';
-        })
-        .catch(() => {
-          dot.classList.add('bad');
-          healthText.textContent = 'unreachable';
-        });
-
-      const output = document.getElementById('output');
-      const label = document.getElementById('req-label');
-      const statusEl = document.getElementById('req-status');
-
-      const sampleBody = {
-        title: 'Notes on Edge Functions ' + new Date().toLocaleTimeString(),
-        content:
-          'Cold starts are short, the CPU budget is the real constraint. These are rough notes from a week of experiments.',
-        tags: ['edge', 'workers'],
-        status: 'draft',
-      };
-
-      async function send(method, path) {
-        const init = { method, headers: { accept: 'application/json' } };
-        if (method === 'POST' || method === 'PATCH' || method === 'PUT') {
-          init.headers['content-type'] = 'application/json';
-          init.body = JSON.stringify(
-            method === 'PATCH' ? { status: 'published' } : method === 'PUT' ? { title: 'Replaced', content: 'x' } : sampleBody,
-          );
-        }
-        label.textContent = method + ' ' + path;
-        statusEl.textContent = '…';
-        statusEl.className = '';
-        try {
-          const res = await fetch(path, init);
-          const text = await res.text();
-          let body = text;
-          try {
-            body = JSON.stringify(JSON.parse(text), null, 2);
-          } catch {}
-          statusEl.textContent = res.status + ' ' + res.statusText;
-          statusEl.className = res.ok ? 'status-ok' : 'status-err';
-          output.textContent = body || '(empty body)';
-        } catch (err) {
-          statusEl.textContent = 'network error';
-          statusEl.className = 'status-err';
-          output.textContent = String(err);
-        }
-      }
-
-      for (const btn of document.querySelectorAll('button[data-path]')) {
-        btn.addEventListener('click', () => send(btn.dataset.method, btn.dataset.path));
-      }
-    </script>
+      </div>
+    </noscript>
+    <script src="/assets/js/site.min.js?v=dfb5485d" defer></script>
   </body>
 </html>
