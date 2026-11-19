@@ -141,57 +141,13 @@ window.FF.IMAGE_META = {
     "w": 735,
     "h": 1069
   },
-  "brown-leather-chesterfield-sofa": {
-    "w": 735,
-    "h": 1069
-  },
-  "black-leather-office-chair": {
-    "w": 736,
-    "h": 736
-  },
-  "wood-dining-set-with-white-chairs": {
-    "w": 736,
-    "h": 552
-  },
-  "white-and-wood-bed": {
-    "w": 735,
-    "h": 919
-  },
-  "two-tone-executive-desk": {
-    "w": 736,
-    "h": 1104
-  },
-  "beige-office-chair": {
-    "w": 736,
-    "h": 493
-  },
-  "marble-round-dining-set": {
-    "w": 736,
-    "h": 1104
-  },
   "marble-dining-set-with-beige-chairs": {
     "w": 735,
     "h": 1105
   },
-  "grey-channel-tufted-bed": {
-    "w": 736,
-    "h": 736
-  },
-  "beige-three-seat-sofa": {
-    "w": 736,
-    "h": 1104
-  },
-  "oval-wood-dining-set": {
-    "w": 736,
-    "h": 736
-  },
   "two-tone-leather-sofa": {
     "w": 736,
     "h": 1104
-  },
-  "round-pedestal-dining-set": {
-    "w": 736,
-    "h": 736
   },
   "curved-wood-accent-chair": {
     "w": 736,
@@ -457,17 +413,9 @@ window.FF.IMAGE_META = {
     "w": 736,
     "h": 736
   },
-  "cream-boucl-armchair": {
-    "w": 736,
-    "h": 1104
-  },
   "beige-fabric-sofa-set": {
     "w": 736,
     "h": 736
-  },
-  "cream-fabric-sofa-set": {
-    "w": 736,
-    "h": 1104
   },
   "beige-upholstered-bed": {
     "w": 736,

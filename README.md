@@ -30,7 +30,6 @@ tools/build.mjs           CSS/JS/Worker production build
 tools/build-images.mjs    regenerates responsive photos, social cover and icons
 tools/build-fonts.mjs     regenerates the self-hosted font sheet
 tools/check.mjs           syntax, metadata, price-free, image and bundle checks
-tools/catalogue/          builds the price-request Word catalogue and the JPG pack from tools/catalogue/catalogue.json
 ```
 
 ## Commands

@@ -53,55 +53,55 @@ const PAGES = {
     title: 'Fine Furniture Debre Markos | Showroom and workshop',
     description:
       'Fine Furniture Debre Markos: three furniture showrooms with Italian leather sofas, oak and walnut tables, beds, wardrobes and hand-woven chairs, plus furniture made to your design. Call 0920 282861.',
-    image: '/assets/img/gallery/vittoria-leather-sofa-lux3-960.jpg',
+    image: '/assets/img/gallery/cream-showroom-sofa-set-lux4-960.webp',
   },
   '/shop': {
     title: 'Furniture gallery in Debre Markos | Fine Furniture',
     description:
       'Browse the Fine Furniture collection in Debre Markos: leather and linen sofas, oak dining tables, beds, wardrobes, sideboards and hand-woven chairs.',
-    image: '/assets/img/gallery/gojjam-linen-sofa-lux3-960.jpg',
+    image: '/assets/img/gallery/grey-modular-sofa-lux4-960.webp',
   },
   '/services': {
     title: 'Custom furniture made to your design | Fine Furniture Debre Markos',
     description:
       'Furniture made to your own design in Debre Markos: wardrobes, tables, sideboards and full-room pieces, measured and built in the Fine Furniture workshop.',
-    image: '/assets/img/gallery/zege-wardrobe-lux3-960.jpg',
+    image: '/assets/img/gallery/oak-wardrobe-lux4-960.webp',
   },
   '/showroom': {
     title: 'Three furniture showrooms in Debre Markos | Fine Furniture',
     description:
       'Visit Fine Furniture in Debre Markos: Ambasel Building first floor, in front of Shebel Hotel, and Kebele 02 at the university. Open Monday to Saturday, 9:00–17:00.',
-    image: '/assets/img/gallery/tana-sideboard-lux3-960.jpg',
+    image: '/assets/img/gallery/beige-showroom-sofa-set-lux4-960.webp',
   },
   '/contact': {
     title: 'Contact Fine Furniture, Debre Markos | 0920 282861',
     description:
       'Call Fine Furniture Debre Markos on 0920 282861, Monday to Saturday 9:00–17:00, or visit one of three showrooms to see the collection in person.',
-    image: '/assets/img/gallery/markos-upholstered-bed-lux3-960.jpg',
+    image: '/assets/img/gallery/two-tone-leather-sofa-lux4-960.webp',
   },
   '/inspiration': {
     title: 'Room notes and furniture ideas | Fine Furniture Debre Markos',
     description:
       'Four ways to start a living room, bedroom, dining room or office with furniture from the Fine Furniture showrooms in Debre Markos, with the measurements that make each arrangement work.',
-    image: '/assets/img/gallery/gojjam-linen-sofa-lux3-960.jpg',
+    image: '/assets/img/gallery/grey-curved-boucl-sectional-lux4-960.webp',
   },
   '/materials': {
     title: 'Leather, oak, linen and stone | Fine Furniture Debre Markos',
     description:
       'The materials and finishes in the Fine Furniture collection: full-grain leather, linen, hand-woven cotton, velvet, bouclé, oak, walnut, metal, glass and honed stone. See and touch them in Debre Markos.',
-    image: '/assets/img/gallery/cardoso-leather-lounge-chair-lux3-960.jpg',
+    image: '/assets/img/gallery/vintage-brown-leather-sofa-lux4-960.webp',
   },
   '/care': {
     title: 'Furniture care and workshop craft | Fine Furniture',
     description:
       'How to care for leather, wood, linen and stone furniture, what to do in the first month, and the frame, joinery and upholstery details worth asking about at the Fine Furniture workshop in Debre Markos.',
-    image: '/assets/img/gallery/tana-sideboard-lux3-960.jpg',
+    image: '/assets/img/gallery/walnut-writing-desk-lux4-960.webp',
   },
   '/privacy': {
     title: 'Privacy and your data | Fine Furniture',
     description:
       'What the Fine Furniture Debre Markos website stores, why it stores it, and how to ask for an account or shortlist to be deleted. No analytics, advertising or tracking scripts.',
-    image: '/assets/img/gallery/birhan-open-bookshelf-lux3-960.jpg',
+    image: '/assets/img/gallery/white-bookshelf-lux4-960.webp',
   },
 };
 
@@ -358,7 +358,7 @@ function website(origin) {
 
 function productSchema(origin, product) {
   const image = product.imageUrl
-    ? origin + product.imageUrl.replace(/-1440\.webp$/, '-960.jpg')
+    ? origin + product.imageUrl
     : origin + '/assets/img/og-cover.jpg';
   return {
     '@context': 'https://schema.org',
@@ -494,7 +494,7 @@ async function storefront(request, env, info) {
         ' See it in Debre Markos. Call 0920 282861.',
       158
     );
-    image = product.imageUrl ? product.imageUrl.replace(/-1440\.webp$/, '-960.jpg') : image;
+    image = product.imageUrl || image;
   } else if (info.type === 'notfound') {
     title = 'Page not found — Fine Furniture';
     description = 'This page does not exist. Browse the gallery or call the shop on 0920 282861.';
