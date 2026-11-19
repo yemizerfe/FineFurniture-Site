@@ -35,7 +35,7 @@ window.FF.IMAGE_META = {
   },
   "beige-dining-chair": {
     "w": 736,
-    "h": 920
+    "h": 851
   },
   "glass-display-cabinet": {
     "w": 576,
@@ -123,11 +123,11 @@ window.FF.IMAGE_META = {
   },
   "white-open-wardrobe": {
     "w": 735,
-    "h": 977
+    "h": 889
   },
   "green-wardrobe": {
     "w": 736,
-    "h": 920
+    "h": 805
   },
   "grey-executive-desk": {
     "w": 736,
@@ -283,7 +283,7 @@ window.FF.IMAGE_META = {
   },
   "open-oak-shelving-unit": {
     "w": 392,
-    "h": 697
+    "h": 644
   },
   "oak-desk-with-drawers": {
     "w": 500,
@@ -310,8 +310,8 @@ window.FF.IMAGE_META = {
     "h": 1056
   },
   "cream-curved-sectional": {
-    "w": 1080,
-    "h": 763
+    "w": 960,
+    "h": 475
   },
   "cream-cloud-bed": {
     "w": 1024,
@@ -322,8 +322,8 @@ window.FF.IMAGE_META = {
     "h": 1280
   },
   "white-marble-top-tv-console": {
-    "w": 1280,
-    "h": 1110
+    "w": 960,
+    "h": 758
   },
   "white-cantilever-chair": {
     "w": 960,
@@ -358,8 +358,8 @@ window.FF.IMAGE_META = {
     "h": 263
   },
   "black-and-white-tv-console": {
-    "w": 1280,
-    "h": 1280
+    "w": 960,
+    "h": 960
   },
   "cognac-executive-chair": {
     "w": 720,
@@ -399,7 +399,7 @@ window.FF.IMAGE_META = {
   },
   "upholstered-bed-with-wood-trim": {
     "w": 736,
-    "h": 1104
+    "h": 817
   },
   "black-and-white-executive-desk": {
     "w": 736,
