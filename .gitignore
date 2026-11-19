@@ -4,3 +4,9 @@ dist/
 .dev.vars
 .env
 tools/catalogue/print-jpgs/
+/incoming/
+/image-sources/
+/furniture-images-jpg/
+/furniture-images-jpg.zip
+/price-request-catalogue.docx
+/price-request-catalogue.pdf
