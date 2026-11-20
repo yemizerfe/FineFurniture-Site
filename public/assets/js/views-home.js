@@ -24,7 +24,10 @@
     const times = (p) => count.get(p.slug) || 0;
     const take = (test) => {
       const pool = withPhoto(FF.PRODUCTS);
+      // A preferred match first, then any photo this page has not used yet —
+      // a missing room/material tag must not make two cards share one image.
       let found = pool.find((p) => !used.has(p.slug) && (!test || test(p)));
+      if (!found) found = pool.find((p) => !used.has(p.slug));
       if (!found) {
         // Out of fresh photos: use the one that has appeared least often.
         const matching = pool.filter((p) => !test || test(p));
