@@ -18,6 +18,15 @@ body {
   overflow-x: clip;
 }
 
+/* The header is injected into #site-header, and a sticky bar cannot outlive
+ * the box of the wrapper around it: once that 110 px wrapper scrolls past,
+ * the bar goes with it. Dropping the wrapper's own box puts the announce bar
+ * and the header back in the page flow, so `.header { position: sticky; top: 0 }`
+ * holds the bar at the top of the window while the announcement scrolls away. */
+#site-header {
+  display: contents;
+}
+
 body {
   min-height: 100dvh;
 }
