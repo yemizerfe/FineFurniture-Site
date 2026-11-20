@@ -47,8 +47,14 @@
     return pick.take((p) => p.category === category);
   }
 
+  /* The hero is one statement piece, and the sofas already own the room
+   * cards below — so the front page opens on a bed or a dining table. */
+  const isSofa = (p) => p.category === 'sofas' || /sofa|sectional|couch/.test(p.slug);
+  const heroPiece = (p) =>
+    !isSofa(p) && (p.category === 'bedroom' || p.category === 'dining');
+
   function hero(pick) {
-    const lead = pick.take() || FF.PRODUCTS[0];
+    const lead = pick.take(heroPiece) || FF.PRODUCTS[0];
     const session = U.state.session || {};
     const signed = !!session.signedIn;
     const counts = {};
