@@ -14,13 +14,28 @@
   const tx = (en, am) => (FF.getLang() === 'am' ? am : en);
   const withPhoto = (list) => list.filter((p) => p.imageUrl);
 
-  function cover(category) {
-    return withPhoto(FF.PRODUCTS.filter((p) => p.category === category))[0] || withPhoto(FF.PRODUCTS)[0];
+  /* One home page shows around two dozen photos, so every section asks this
+   * picker for a piece nobody has used yet. Only when the loaded catalogue is
+   * too small does it fall back, so a section never repeats the hero by
+   * accident on the first visit. */
+  function picker() {
+    const used = new Set();
+    const take = (test) => {
+      const pool = withPhoto(FF.PRODUCTS);
+      let found = pool.find((p) => !used.has(p.slug) && (!test || test(p)));
+      if (!found) found = pool.find((p) => !test || test(p)) || pool[0] || null;
+      if (found) used.add(found.slug);
+      return found;
+    };
+    return { take: take, used: used };
   }
 
-  function hero() {
-    const photos = withPhoto(FF.PRODUCTS);
-    const lead = photos[0] || FF.PRODUCTS[0];
+  function cover(pick, category) {
+    return pick.take((p) => p.category === category);
+  }
+
+  function hero(pick) {
+    const lead = pick.take() || FF.PRODUCTS[0];
     const session = U.state.session || {};
     const signed = !!session.signedIn;
     const counts = {};
@@ -78,7 +93,7 @@
     );
   }
 
-  function categories() {
+  function categories(pick) {
     const counts = {};
     FF.PRODUCTS.forEach((p) => {
       counts[p.category] = (counts[p.category] || 0) + 1;
@@ -95,7 +110,7 @@
       '<div class="gh-cats">' +
       present
         .map((c, i) => {
-          const p = cover(c.id);
+          const p = cover(pick, c.id);
           return (
             '<a class="gh-cat' + (i === 0 ? ' is-wide' : '') + '" href="/shop?cat=' + c.id + '">' +
             '<span class="gh-cat-media">' + (p ? U.media(p) : '') + '</span>' +
@@ -108,9 +123,20 @@
     );
   }
 
-  function pieces() {
+  function pieces(pick) {
     if (!FF.PRODUCTS.length) return '';
-    const list = FF.PRODUCTS.slice(0, 12);
+    const list = [];
+    const pool = withPhoto(FF.PRODUCTS);
+    const add = (p) => {
+      if (list.length < 12 && !list.some((x) => x.slug === p.slug)) {
+        pick.used.add(p.slug);
+        list.push(p);
+      }
+    };
+    pool.forEach((p) => {
+      if (list.length < 12 && !pick.used.has(p.slug)) add(p);
+    });
+    pool.forEach(add);
     return (
       '<section class="gx-section gx-tint"><div class="wrap">' +
       '<div class="gx-sechead"><div>' +
@@ -123,10 +149,9 @@
     );
   }
 
-  function world() {
-    const photos = withPhoto(FF.PRODUCTS);
-    const a = photos[1] || photos[0];
-    const b = photos[7] || photos[2] || photos[0];
+  function world(pick) {
+    const a = pick.take() || withPhoto(FF.PRODUCTS)[0];
+    const b = pick.take() || a;
     return (
       '<section class="gx-section gh-world"><div class="wrap gh-world-grid">' +
       '<div class="gh-world-art">' +
@@ -154,11 +179,10 @@
     );
   }
 
-  function editorial() {
-    const pick = (fn) => withPhoto(FF.PRODUCTS.filter(fn))[0] || withPhoto(FF.PRODUCTS)[0];
-    const room = pick((p) => p.room === 'living');
-    const wood = pick((p) => (p.materials || []).indexOf('solid-wood') > -1 || (p.materials || []).indexOf('oak') > -1);
-    const soft = pick((p) => (p.materials || []).indexOf('linen') > -1 || (p.materials || []).indexOf('boucle') > -1);
+  function editorial(pick) {
+    const room = pick.take((p) => p.room === 'living');
+    const wood = pick.take((p) => (p.materials || []).indexOf('solid-wood') > -1 || (p.materials || []).indexOf('oak') > -1);
+    const soft = pick.take((p) => (p.materials || []).indexOf('linen') > -1 || (p.materials || []).indexOf('boucle') > -1);
     const cards = [
       {
         href: '/inspiration',
@@ -244,5 +268,8 @@
   }
 
   FF.views = FF.views || {};
-  FF.views.home = () => hero() + ribbon() + categories() + pieces() + editorial() + world() + visit() + closing();
+  FF.views.home = () => {
+    const pick = picker();
+    return hero(pick) + ribbon() + categories(pick) + pieces(pick) + editorial(pick) + world(pick) + visit() + closing();
+  };
 })();

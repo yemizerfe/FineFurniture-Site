@@ -1063,13 +1063,18 @@
 
   (async function loadLiveCatalogue() {
     try {
-      const response = await fetch('/api/catalogue?per=12&page=1&sort=featured', { headers: { accept: 'application/json' } });
+      const response = await fetch('/api/catalogue?per=24&page=1&sort=featured', { headers: { accept: 'application/json' } });
       if (!response.ok) throw new Error('catalogue request failed: ' + response.status);
       const data = await response.json();
       if (!data || !Array.isArray(data.products)) throw new Error('bad catalogue');
       FF.cacheCatalogue(data);
       if (FF.applyCatalogue(data.products)) render({ keepScroll: true });
       U.syncCompare();
+      // The home page shows more photos than one shop page holds; pull the rest
+      // in the background so no section has to reuse another section's piece.
+      FF.loadAllProducts()
+        .then(() => render({ keepScroll: true }))
+        .catch(() => {});
     } catch (err) {
       console.error('FineFurniture: the furniture list could not be loaded —', err && err.message);
       FF.catalogueError = true;

@@ -14,8 +14,12 @@
 
   const tx = (en, am) => (FF.getLang() === 'am' ? am : en);
 
+  /* Some links use the shop's filter slug rather than the catalogue category. */
+  const CATEGORY_ALIAS = { beds: 'bedroom', bed: 'bedroom', sofas: 'sofas' };
+
   function photoFor(category, index) {
-    const list = (FF.PRODUCTS || []).filter((p) => p.imageUrl && (!category || p.category === category));
+    const cat = CATEGORY_ALIAS[category] || category;
+    const list = (FF.PRODUCTS || []).filter((p) => p.imageUrl && (!cat || p.category === cat));
     const pool = list.length ? list : (FF.PRODUCTS || []).filter((p) => p.imageUrl);
     return pool.length ? pool[index % pool.length] : null;
   }
