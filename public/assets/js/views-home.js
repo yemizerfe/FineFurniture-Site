@@ -19,12 +19,22 @@
    * too small does it fall back, so a section never repeats the hero by
    * accident on the first visit. */
   function picker() {
+    const count = new Map();
     const used = new Set();
+    const times = (p) => count.get(p.slug) || 0;
     const take = (test) => {
       const pool = withPhoto(FF.PRODUCTS);
       let found = pool.find((p) => !used.has(p.slug) && (!test || test(p)));
-      if (!found) found = pool.find((p) => !test || test(p)) || pool[0] || null;
-      if (found) used.add(found.slug);
+      if (!found) {
+        // Out of fresh photos: use the one that has appeared least often.
+        const matching = pool.filter((p) => !test || test(p));
+        matching.sort((a, b) => times(a) - times(b));
+        found = matching[0] || pool[0] || null;
+      }
+      if (found) {
+        used.add(found.slug);
+        count.set(found.slug, times(found) + 1);
+      }
       return found;
     };
     return { take: take, used: used };
@@ -269,7 +279,15 @@
 
   FF.views = FF.views || {};
   FF.views.home = () => {
+    // The rail can draw on whatever is left, so the specific editorial picks
+    // are reserved first — otherwise it eats the pool and those cards fall
+    // back onto each other's photo.
     const pick = picker();
-    return hero(pick) + ribbon() + categories(pick) + pieces(pick) + editorial(pick) + world(pick) + visit() + closing();
+    const lead = hero(pick);
+    const cats = categories(pick);
+    const edit = editorial(pick);
+    const globe = world(pick);
+    const rail = pieces(pick);
+    return lead + ribbon() + cats + rail + edit + globe + visit() + closing();
   };
 })();

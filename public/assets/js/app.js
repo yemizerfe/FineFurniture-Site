@@ -1063,12 +1063,28 @@
 
   (async function loadLiveCatalogue() {
     try {
-      const response = await fetch('/api/catalogue?per=24&page=1&sort=featured', { headers: { accept: 'application/json' } });
-      if (!response.ok) throw new Error('catalogue request failed: ' + response.status);
-      const data = await response.json();
+      const pageUrl = (n) => '/api/catalogue?per=24&page=' + n + '&sort=featured';
+      const getPage = (n) =>
+        fetch(pageUrl(n), { headers: { accept: 'application/json' } }).then((res) => {
+          if (!res.ok) throw new Error('catalogue request failed: ' + res.status);
+          return res.json();
+        });
+      // Two pages give the home page enough different photos to fill every
+      // section without repeating one.
+      const data = await getPage(1);
       if (!data || !Array.isArray(data.products)) throw new Error('bad catalogue');
-      FF.cacheCatalogue(data);
-      if (FF.applyCatalogue(data.products)) render({ keepScroll: true });
+      const products = data.products.slice();
+      try {
+        const second = await getPage(2);
+        (second.products || []).forEach((p) => {
+          if (!products.some((x) => x.slug === p.slug)) products.push(p);
+        });
+      } catch (e) {
+        /* one page is still a usable home page */
+      }
+      const merged = Object.assign({}, data, { products: products, page: 1, pages: 1 });
+      FF.cacheCatalogue(merged);
+      if (FF.applyCatalogue(products)) render({ keepScroll: true });
       U.syncCompare();
       // The home page shows more photos than one shop page holds; pull the rest
       // in the background so no section has to reuse another section's piece.

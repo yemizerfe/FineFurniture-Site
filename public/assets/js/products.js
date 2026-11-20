@@ -61,7 +61,7 @@ function materialName(id, lang) {
 }
 
 /* --------------------------------------------------------------- live data */
-const CACHE_KEY = 'ff_catalogue_v7';
+const CACHE_KEY = 'ff_catalogue_v8';
 const DEFAULT_COLOR = { id: 'standard', name: { en: 'As shown', am: 'እንደሚታየው' }, hex: '#c9b299' };
 const DEFAULT_SIZE = { id: 'standard', label: { en: 'As shown', am: 'እንደሚታየው' } };
 
